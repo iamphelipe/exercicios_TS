@@ -14,3 +14,4 @@ function calculadora({ a, b, operacao }) {
 }
 let resultado = calculadora({ a: 9, b: 10, operacao: "subtracao" });
 console.log(resultado);
+export {};
