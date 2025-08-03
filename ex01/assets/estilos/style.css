@@ -87,3 +87,22 @@ h1 {
 img {
   filter: brightness(0) invert(1);
 }
+
+footer {
+   background-color: #323232;
+   margin-top: 2.5rem;
+   padding: 1rem 1.5rem;
+   text-align: center;
+}
+
+p, a {
+   color: white;;
+   text-decoration: none;
+}
+
+a {
+   font-weight: 700;
+}
+a:hover {
+   color: #d4d4d4;
+}
