@@ -56,5 +56,11 @@ function filtrarTarefasPorStatus(tarefas, status) {
 }
 let taskFilter = filtrarTarefasPorStatus(tarefas, "em progesso");
 console.log(taskFilter);
-export {};
 // 6 - Crie uma função alterarStatusTarefa que mude o status de uma tarefa.
+function alterarStatusTarefa(tarefa, status) {
+    tarefa.status = status;
+    return tarefa;
+}
+const newTaskStatus = alterarStatusTarefa(academia, "concluida");
+console.log(newTaskStatus);
+export {};

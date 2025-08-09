@@ -100,3 +100,13 @@ console.log(taskFilter);
 
 
 // 6 - Crie uma função alterarStatusTarefa que mude o status de uma tarefa.
+
+function alterarStatusTarefa(tarefa: Tarefa, status: Status) : Tarefa {
+
+   tarefa.status = status
+
+   return tarefa
+}
+
+const newTaskStatus = alterarStatusTarefa(academia, "concluida")
+console.log(newTaskStatus);
