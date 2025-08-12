@@ -11,7 +11,7 @@ interface Livro {
 }
 
 interface Usuario {
-   id: number;
+   id?: number;
    nome: string;
    livrosEmprestados: Livro[]
 }
@@ -47,13 +47,38 @@ let biblioteca : Livro[] = [
    }
 ]
 
+let users: Usuario[] = [
+   {
+      id: 1,
+      nome: "Phelipe",
+      livrosEmprestados: []
+   },
+   {
+      id: 2,
+      nome: "José Martinho",
+      livrosEmprestados: []
+   },
+   {
+      id: 3,
+      nome: "Dina",
+      livrosEmprestados: []
+   },
+   {
+      id: 4,
+      nome: "Isadora",
+      livrosEmprestados: []
+   }
+]
+
 console.log(biblioteca);
+console.log(users);
+
 
 // Funcionalidades obrigatórias:
 
 // Adicionar livros à biblioteca.
 
-function adicionarLivro(biblioteca: Livro[], livro: Livro) {
+function adicionarLivro(biblioteca: Livro[], livro: Livro) : Livro[] {
    
    const newBook = {
       id: biblioteca.length + 1,
@@ -73,8 +98,26 @@ let reiLeao: Livro = {
 }
 
 biblioteca = adicionarLivro(biblioteca, reiLeao)
+console.log(biblioteca);
+
 
 // Cadastrar usuários.
+
+function cadastrarUsuario(users: Usuario[], usuario: Usuario) {
+
+   const newUser: Usuario = {
+      id: users.length + 1,
+      ...usuario
+   }
+
+   users.push(newUser)
+   return users
+}
+
+users = cadastrarUsuario(users, {nome: "Dudu", livrosEmprestados:[]}) 
+
+console.log(users);
+
 
 // Emprestar livro para um usuário (apenas se o livro estiver disponível).
 
