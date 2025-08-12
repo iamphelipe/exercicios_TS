@@ -27,6 +27,13 @@ let biblioteca = [
         autor: "Stephenie Meyer",
         anoPublicacao: 2008,
         disponivel: false
+    },
+    {
+        id: 5,
+        titulo: "Turma da Mônica Jovem",
+        autor: "Maurício de Souza",
+        anoPublicacao: 1989,
+        disponivel: true
     }
 ];
 let users = [
@@ -48,6 +55,11 @@ let users = [
     {
         id: 4,
         nome: "Isadora",
+        livrosEmprestados: []
+    },
+    {
+        id: 5,
+        nome: "Renato",
         livrosEmprestados: []
     }
 ];
@@ -82,8 +94,23 @@ function cadastrarUsuario(users, usuario) {
 }
 users = cadastrarUsuario(users, { nome: "Dudu", livrosEmprestados: [] });
 console.log(users);
-export {};
 // Emprestar livro para um usuário (apenas se o livro estiver disponível).
+function bookToUser(user, livro) {
+    if (livro && user) {
+        if (livro.disponivel === false)
+            return console.log("Livro indisponível!");
+        user.livrosEmprestados.push(livro);
+        livro.disponivel = false;
+    }
+    return {
+        ...user
+    };
+}
+console.log(bookToUser(users[2], biblioteca[0]));
+console.log(bookToUser(users[5], biblioteca[4]));
+console.log(biblioteca);
+console.log(users);
+export {};
 // Devolver livro.
 // Listar livros disponíveis.
 // Listar livros emprestados de um usuário.
