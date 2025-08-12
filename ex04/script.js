@@ -29,7 +29,30 @@ let biblioteca = [
         disponivel: false
     }
 ];
+let users = [
+    {
+        id: 1,
+        nome: "Phelipe",
+        livrosEmprestados: []
+    },
+    {
+        id: 2,
+        nome: "José Martinho",
+        livrosEmprestados: []
+    },
+    {
+        id: 3,
+        nome: "Dina",
+        livrosEmprestados: []
+    },
+    {
+        id: 4,
+        nome: "Isadora",
+        livrosEmprestados: []
+    }
+];
 console.log(biblioteca);
+console.log(users);
 // Funcionalidades obrigatórias:
 // Adicionar livros à biblioteca.
 function adicionarLivro(biblioteca, livro) {
@@ -47,8 +70,19 @@ let reiLeao = {
     disponivel: false
 };
 biblioteca = adicionarLivro(biblioteca, reiLeao);
-export {};
+console.log(biblioteca);
 // Cadastrar usuários.
+function cadastrarUsuario(users, usuario) {
+    const newUser = {
+        id: users.length + 1,
+        ...usuario
+    };
+    users.push(newUser);
+    return users;
+}
+users = cadastrarUsuario(users, { nome: "Dudu", livrosEmprestados: [] });
+console.log(users);
+export {};
 // Emprestar livro para um usuário (apenas se o livro estiver disponível).
 // Devolver livro.
 // Listar livros disponíveis.
