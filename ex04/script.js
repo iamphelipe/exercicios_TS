@@ -34,6 +34,13 @@ let biblioteca = [
         autor: "Maurício de Souza",
         anoPublicacao: 1989,
         disponivel: true
+    },
+    {
+        id: 6,
+        titulo: "Diário de Um Banana",
+        autor: "Jeff Kinney",
+        anoPublicacao: 2007,
+        disponivel: true
     }
 ];
 let users = [
@@ -106,12 +113,28 @@ function bookToUser(user, livro) {
         ...user
     };
 }
-console.log(bookToUser(users[2], biblioteca[0]));
-console.log(bookToUser(users[5], biblioteca[4]));
+bookToUser(users[2], biblioteca[0]);
+bookToUser(users[5], biblioteca[4]);
+bookToUser(users[5], biblioteca[2]);
+bookToUser(users[5], biblioteca[5]);
 console.log(biblioteca);
 console.log(users);
-export {};
 // Devolver livro.
+function bookToLibrary(user, livro) {
+    if (user && livro) {
+        if (user.livrosEmprestados.length === 0)
+            return console.log("Usuário não possui livros!");
+        livro.disponivel = true;
+        let newBooksFiltered = user.livrosEmprestados.filter(b => b.id !== livro.id);
+        user.livrosEmprestados = newBooksFiltered;
+        console.log(livro);
+        return user;
+    }
+}
+bookToLibrary(users[5], biblioteca[4]);
+console.log(users);
+console.log(biblioteca);
+export {};
 // Listar livros disponíveis.
 // Listar livros emprestados de um usuário.
 // Regras extras:
