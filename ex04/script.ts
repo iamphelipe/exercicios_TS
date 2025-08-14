@@ -194,7 +194,33 @@ console.log(biblioteca);
 
 // Listar livros disponíveis.
 
+function listBookAvailable() {
+   let listBook = biblioteca.filter(b => b.disponivel === true)
+
+   return listBook
+
+}
+
+let livrosDisponiveis = listBookAvailable()
+console.log(livrosDisponiveis);
+
+
 // Listar livros emprestados de um usuário.
+
+function booksLeanUser(user: Usuario | undefined) {
+
+   if (user) {
+     if (user.livrosEmprestados.length === 0) return console.log('Usuário não possui livro disponível!')
+
+     return user.livrosEmprestados.map((b) => b)
+   }
+
+}
+
+let livrosEmprestadosUsuario = booksLeanUser(users[2])
+console.log(livrosEmprestadosUsuario);
+
+
 
 // Regras extras:
 // Um usuário pode ter no máximo 3 livros emprestados ao mesmo tempo.
