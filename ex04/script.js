@@ -41,6 +41,13 @@ let biblioteca = [
         autor: "Jeff Kinney",
         anoPublicacao: 2007,
         disponivel: true
+    },
+    {
+        id: 7,
+        titulo: "Cinderela",
+        autor: "Charles Perrault",
+        anoPublicacao: 1697,
+        disponivel: true
     }
 ];
 let users = [
@@ -104,8 +111,14 @@ console.log(users);
 // Emprestar livro para um usuário (apenas se o livro estiver disponível).
 function bookToUser(user, livro) {
     if (livro && user) {
-        if (livro.disponivel === false)
-            return console.log("Livro indisponível!");
+        if (user.livrosEmprestados.length >= 3) {
+            console.log("Usuário já possui o limites de livros!");
+            return user;
+        }
+        if (livro.disponivel === false) {
+            console.log("Livro indisponível!");
+            return user;
+        }
         user.livrosEmprestados.push(livro);
         livro.disponivel = false;
     }
@@ -114,9 +127,12 @@ function bookToUser(user, livro) {
     };
 }
 bookToUser(users[2], biblioteca[0]);
-bookToUser(users[5], biblioteca[4]);
-bookToUser(users[5], biblioteca[2]);
-bookToUser(users[5], biblioteca[5]);
+bookToUser(users[5], biblioteca[4]); // Turma da Monica Jovem
+bookToUser(users[5], biblioteca[2]); // O Garoto do Pijama Listrado
+bookToUser(users[5], biblioteca[5]); // Diário de Um Banana
+console.log("Abaixo");
+let validation = bookToUser(users[5], biblioteca[6]);
+console.log(validation);
 console.log(biblioteca);
 console.log(users);
 // Devolver livro.
