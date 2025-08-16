@@ -163,9 +163,16 @@ function bookToUser(user: Usuario | undefined, livro: Livro | undefined) {
    livro.disponivel = false
    }
 
+   const data = new Date()
+   const dia = data.getDate()
+   const mes = data.getMonth()
+   const ano = data.getFullYear()
+
+   let dataFormatada = `${dia}/0${mes + 1}/${ano}`
 
    return {
-      ...user
+      ...user,
+      data: dataFormatada
    }
 }
 
@@ -176,6 +183,9 @@ bookToUser(users[5], biblioteca[5]) // Diário de Um Banana
 console.log("Validação abaixo")
 let validation = bookToUser(users[5], biblioteca[6])
 console.log(validation) 
+
+console.log(bookToUser(users[3], biblioteca[6]));
+
 
 
 console.log(biblioteca);
@@ -260,8 +270,5 @@ function searchBooks(busca: string) {
 
 let book =  searchBooks("Maurício de Souza")
 console.log(book);
-
-
-
 
 // Adicionar a data do empréstimo e calcular quantos dias o usuário ficou com o livro

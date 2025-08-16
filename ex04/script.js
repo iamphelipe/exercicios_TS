@@ -122,8 +122,14 @@ function bookToUser(user, livro) {
         user.livrosEmprestados.push(livro);
         livro.disponivel = false;
     }
+    const data = new Date();
+    const dia = data.getDate();
+    const mes = data.getMonth();
+    const ano = data.getFullYear();
+    let dataFormatada = `${dia}/0${mes + 1}/${ano}`;
     return {
-        ...user
+        ...user,
+        data: dataFormatada
     };
 }
 bookToUser(users[2], biblioteca[0]);
@@ -133,6 +139,7 @@ bookToUser(users[5], biblioteca[5]); // Diário de Um Banana
 console.log("Validação abaixo");
 let validation = bookToUser(users[5], biblioteca[6]);
 console.log(validation);
+console.log(bookToUser(users[3], biblioteca[6]));
 console.log(biblioteca);
 console.log(users);
 // Devolver livro.
