@@ -173,7 +173,7 @@ bookToUser(users[2], biblioteca[0])
 bookToUser(users[5], biblioteca[4]) // Turma da Monica Jovem
 bookToUser(users[5], biblioteca[2]) // O Garoto do Pijama Listrado
 bookToUser(users[5], biblioteca[5]) // Diário de Um Banana
-console.log("Abaixo")
+console.log("Validação abaixo")
 let validation = bookToUser(users[5], biblioteca[6])
 console.log(validation) 
 
@@ -245,3 +245,23 @@ console.log(livrosEmprestadosUsuario);
 // Ao emprestar um livro, o campo disponivel deve mudar para false.
 
 // Ao devolver, disponivel deve voltar para true.
+
+
+// SUGESTÕES DE BÔNUS
+
+// Criar funções para buscar livros por título ou autor.
+
+function searchBooks(busca: string) {
+   let bookSearched = biblioteca.find(b => b.titulo == busca) || biblioteca.find(b => b.autor == busca)
+
+   if(!bookSearched) return console.log("Livro não encontrado!")
+   return bookSearched
+}
+
+let book =  searchBooks("Maurício de Souza")
+console.log(book);
+
+
+
+
+// Adicionar a data do empréstimo e calcular quantos dias o usuário ficou com o livro
