@@ -16,6 +16,15 @@ interface Usuario {
    livrosEmprestados: Livro[]
 }
 
+interface Emprestimo {
+  livro: Livro;
+  usuario: Usuario;
+  dataEmprestimo: Date;
+  dataDevolucaoPrevista: Date;
+  dataDevolucaoReal?: Date;
+}
+
+
 let biblioteca : Livro[] = [
    {
       id: 1,
