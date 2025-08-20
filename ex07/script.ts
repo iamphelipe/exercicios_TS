@@ -20,6 +20,7 @@ async function fetchAPI(url: string) {
 
 async function displaySreen() {
    if(dateInicio && dateFinal && result) {
+      result.innerHTML = ""
       if(dateInicio.value === "" || dateFinal.value === "") return
 
       let inicio = dateInicio.value
@@ -31,7 +32,9 @@ async function displaySreen() {
 
       data.map(d => {
          result.innerHTML += `
-         
+         <ul>
+            <li>Nome: ${d.nome} | Preço: ${d.preco} | ${d.status}</li>
+         </ul>
          `
       })
 
